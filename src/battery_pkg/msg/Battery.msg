@@ -1,0 +1,2 @@
+float32 electricity
+string status

@@ -1,0 +1,9 @@
+
+(cl:in-package :asdf)
+
+(defsystem "battery_pkg-msg"
+  :depends-on (:roslisp-msg-protocol :roslisp-utils )
+  :components ((:file "_package")
+    (:file "Battery" :depends-on ("_package_Battery"))
+    (:file "_package_Battery" :depends-on ("_package"))
+  ))
