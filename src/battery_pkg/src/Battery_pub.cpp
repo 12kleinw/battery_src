@@ -60,7 +60,7 @@ int main(int argc,char *argv[])
     //创建句柄
     ros::NodeHandle nh;
     //设置发布电量的话题
-    ros::Publisher battery_pub = nh.advertise<battery_pkg::Battery>("battery_pub.msg",10);
+    ros::Publisher battery_pub = nh.advertise<battery_pkg::Battery>("battery_pub",10);
     battery_pkg::Battery Battery;
     //设置发布电池状态的话题
     //ros::Publisher battery_status = nh.advertise<battery_pkg::Battery>("battery_status_pub",10);
