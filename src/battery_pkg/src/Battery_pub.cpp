@@ -134,24 +134,12 @@ int main(int argc,char *argv[])
         sp.read(rev_electArray,sizeof(rev_electArray));
         //读取电量
         uint16_t soc_raw = (rev_electArray[10] << 8) | rev_electArray[11];
-        Battery.electricity = soc_raw * 0.1;
+        Battery.electricity = static_cast<double>(soc_raw)/100.0;
         //读取电池状态
         sp.write(statusArray,sizeof(statusArray));
         sp.read(rev_statustArray,sizeof(rev_statustArray));
-        switch (rev_statustArray[4])
-        {
-        case 0:
-            Battery.status = "静止状态";
-            break;
-        case 1:
-            Battery.status = "充电状态";
-            break;
-        case 2:
-            Battery.status = "放电状态";
-            break;
-        default:
-            break;
-        }
+        Battery.status = (rev_statustArray[4])
+       
         battery_pub.publish(Battery);
         sp.write(errorArray,sizeof(errorArray));
         sp.read(rev_errorArray,sizeof(rev_errorArray));

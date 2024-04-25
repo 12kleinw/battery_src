@@ -1,2 +1,2 @@
-float32 electricity
-string status
+float64 electricity
+bool status
